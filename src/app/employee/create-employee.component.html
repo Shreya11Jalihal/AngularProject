@@ -1,0 +1,87 @@
+<div class="container">
+  <form id="contact" action="" method="post" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <h3>Create Employee</h3>
+    
+    <fieldset>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Your Name" tabindex="2" class="form-control" required 
+         (blur)="logValidationerrors()" formControlName="fullName" [ngClass]="{'is-invalid': formErrors.fullName}">
+         <span class="invalid-feedback" *ngIf="formErrors.fullName">
+          {{formErrors.fullName}}
+        </span>
+        {{employeeForm.value.fullName}}
+      </div>
+    </fieldset>
+    <fieldset>
+    <div class="form-group">
+      <label for="name">Email</label>
+        <input placeholder="Your Email Address" type="email" tabindex="2" class="form-control" formControlName="email"
+        (blur)="logValidationerrors()" required [ngClass]="{'is-invalid': formErrors.email}">
+      <span class="invalid-feedback" *ngIf="formErrors.email">
+        {{formErrors.email}}
+      </span>
+    </div>
+  </fieldset>
+  
+    <div formGroupName="skills">
+      <fieldset>
+      <div class="form-group">
+        <label for="name">Skill</label>
+          <input placeholder="Your skills" type="text" tabindex="2"  name="skillName" required class="form-control"
+            formControlName="skillName" (blur)="logValidationerrors()" required [ngClass]="{'is-invalid': formErrors.skillName}">
+        <span class="invalid-feedback" *ngIf="formErrors.skillName">
+          {{formErrors.skillName}}
+        </span>
+        {{employeeForm.value.skills.skillName}}
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="form-group">
+        <label for="experience">Experience</label>
+          <input placeholder="Experience in Years" type="text" tabindex="2" class="form-control" required 
+            formControlName="experienceInYears"  (blur)="logValidationerrors()" required [ngClass]="{'is-invalid': formErrors.experienceInYears}">
+            <span class="invalid-feedback" *ngIf="formErrors.experienceInYears">
+              {{formErrors.experienceInYears}}
+            </span>
+      </div>
+    </fieldset>
+      <div class="form-group" [ngClass]="{'is-invalid': formErrors.proficiency}">
+        <label class="radio-inline">
+        <input type="radio" value="beginner" formControlName="proficiency" >Beginner
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="intermediate" formControlName="proficiency">Intermediate
+        </label>
+        <label class="radio-inline">
+        <input type="radio" value="expert" formControlName="proficiency">Expert
+        </label>
+      </div>
+      <span class="invalid-feedback" *ngIf="formErrors.experienceInYears">
+        {{formErrors.proficiency}}
+      </span>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <fieldset>
+          <button name="submit" type="submit" id="contact-submit" >Submit</button>
+        </fieldset>
+      </div>
+
+      <div class="col-sm-6">
+        <fieldset>
+          <button name="submit" type="button" id="contact-load" (click)="onLoadData()">Load
+            Data</button>
+        </fieldset>
+      </div>
+    </div>
+  </form>
+  <form #testForm="ngForm">
+    <fieldset>
+      <label>Test:</label>
+      <input type="text"  ngModel>
+      //{{testName.value}}
+    </fieldset>
+
+  </form>
+</div>
